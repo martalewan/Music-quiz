@@ -1,0 +1,22 @@
+{
+  "name": "music-quiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd ./client && npm run start",
+    "server": "cd ./server && npm run start",
+    "dev": "npm run client && npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martalewan/Music-quiz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martalewan/Music-quiz/issues"
+  },
+  "homepage": "https://github.com/martalewan/Music-quiz#readme"
+}
