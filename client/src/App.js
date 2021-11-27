@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import survivor from './music/survivor.mp3';
 
 const App = () => {
   useEffect(() => {
@@ -16,13 +17,13 @@ const App = () => {
       The Music Quiz
       <p>This is a new paragraph</p>
       <audio controls>
-        <source src="client/public/music/survivor.mp3" type="audio/mpeg" />
+        <source src={survivor} type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>
-      <audio controls>
+      {/* <audio controls>
         <source src="client/public/music/Survivor-short.wav" type="audio/wav" />
         Your browser does not support the audio element.
-      </audio>
+      </audio> */}
     </div>
   );
 };
