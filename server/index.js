@@ -1,4 +1,4 @@
-const http = require('http');
+// const http = require('http');
 const app = require('express')();
 require('dotenv').config();
 const socketsConnection = require('./sockets')
