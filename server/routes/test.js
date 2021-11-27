@@ -1,11 +1,12 @@
 const express = require('express');
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Some blablablablabal')
-})
+  res.send('Some blablablablabal');
+});
 router.get('/deeperroute', (req, res) => {
-  res.send('deepy')
-})
+  res.send('deepy');
+});
 
 module.exports = router;
