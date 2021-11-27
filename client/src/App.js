@@ -14,6 +14,7 @@ const App = () => {
   return (
     <div className="App">
       The Music Quiz
+      <p>This is a new paragraph</p>
     </div>
   );
 };
