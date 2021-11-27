@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd ./client && npm run start",
     "build": "cd ./client npm run build",
-    "server": "cd ./server && npm run start",
-    "start": "npm run server",
+    "server": "cd ./server && npm run nodemon",
+    "start": "cd ./server && npm run start",
     "dev": "npm run client && npm run server"
   },
   "repository": {
