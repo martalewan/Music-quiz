@@ -1,4 +1,4 @@
-{
+1{
   "name": "music-quiz",
   "version": "1.0.0",
   "description": "",
@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd ./client && npm run start",
+    "build": "cd ./client npm run build",
     "server": "cd ./server && npm run start",
+    "start": "npm run server",
     "dev": "npm run client && npm run server"
   },
   "repository": {
