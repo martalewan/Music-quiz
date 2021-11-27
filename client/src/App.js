@@ -15,6 +15,14 @@ const App = () => {
     <div className="App">
       The Music Quiz
       <p>This is a new paragraph</p>
+      <audio controls>
+        <source src="client/public/music/survivor.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <audio controls>
+        <source src="client/public/music/Survivor-short.wav" type="audio/wav" />
+        Your browser does not support the audio element.
+      </audio>
     </div>
   );
 };
