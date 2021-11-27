@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd ./client && npm run start",
     "build": "cd ./client npm run build",
-    "server": "cd ./server && npm run nodemon",
-    "start": "cd ./server && npm run start",
+    "server": "nodemon",
+    "start": "node index.js && npm run build",
     "dev": "npm run client && npm run server"
   },
   "repository": {
@@ -20,5 +20,14 @@
   "bugs": {
     "url": "https://github.com/martalewan/Music-quiz/issues"
   },
-  "homepage": "https://github.com/martalewan/Music-quiz#readme"
+  "homepage": "https://github.com/martalewan/Music-quiz#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "ws": "^8.3.0"
+  },
+  "devDependencies": {
+    "eslint-config-salt": "^1.1.0",
+    "nodemon": "^2.0.15"
+  }
 }
