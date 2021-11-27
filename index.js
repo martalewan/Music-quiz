@@ -33,4 +33,3 @@ app.get('/queries', (req, res, next) => {
 app.use('/test', testRoute);
 
 module.exports = server;
-
