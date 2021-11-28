@@ -2,18 +2,17 @@ import { useEffect } from 'react';
 import survivor from './music/survivor.mp3';
 
 const App = () => {
-  const getEnvVars = async () => {
-    var HOST = location.origin.replace(/^http/, 'ws')
-    const socket = new WebSocket(HOST);
+  useEffect(() => {
+      const HOST = window.location.origin.replace(/^http/, 'ws');
+      const socket = new WebSocket(HOST);
 
-    socket.addEventListener('message', e => {
-      console.log('BANANANANANA', e.data);
-    });
-    socket.addEventListener('open', () => {
-      console.log('Frontend is open for papi');
-    });
-  };
-  getEnvVars();
+      socket.addEventListener('message', e => {
+        console.log('BANANANANANA', e.data);
+      });
+      socket.addEventListener('open', () => {
+        console.log('Frontend is open for papi');
+      });
+  }, []);
 
   return (
     <div className="App">

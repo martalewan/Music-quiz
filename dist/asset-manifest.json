@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/static/js/main.20e275b8.chunk.js",
-    "main.js.map": "/static/js/main.20e275b8.chunk.js.map",
+    "main.js": "/static/js/main.5c479d6f.chunk.js",
+    "main.js.map": "/static/js/main.5c479d6f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.776c1e0d.js",
     "runtime-main.js.map": "/static/js/runtime-main.776c1e0d.js.map",
-    "static/js/2.13eab662.chunk.js": "/static/js/2.13eab662.chunk.js",
-    "static/js/2.13eab662.chunk.js.map": "/static/js/2.13eab662.chunk.js.map",
+    "static/js/2.9fab9a15.chunk.js": "/static/js/2.9fab9a15.chunk.js",
+    "static/js/2.9fab9a15.chunk.js.map": "/static/js/2.9fab9a15.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.13eab662.chunk.js.LICENSE.txt": "/static/js/2.13eab662.chunk.js.LICENSE.txt",
+    "static/js/2.9fab9a15.chunk.js.LICENSE.txt": "/static/js/2.9fab9a15.chunk.js.LICENSE.txt",
     "static/media/survivor.67e4b78d.mp3": "/static/media/survivor.67e4b78d.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.776c1e0d.js",
-    "static/js/2.13eab662.chunk.js",
-    "static/js/main.20e275b8.chunk.js"
+    "static/js/2.9fab9a15.chunk.js",
+    "static/js/main.5c479d6f.chunk.js"
   ]
 }
