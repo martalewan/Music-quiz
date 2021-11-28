@@ -34,6 +34,5 @@ app.get('/queries', (req, res, next) => {
 });
 
 app.use('/test', testRoute);
-app.use('/setup-vars', setupVars);
 
 module.exports = server;
