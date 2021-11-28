@@ -5,12 +5,15 @@ require('dotenv').config();
 
 const socketsConnection = require('./server/sockets')
 const testRoute = require('./server/routes/test');
+const setupVars = require('./server/routes/setup-vars');
+
 const db = require('./server/db/connection'); 
 
 const PORT = process.env.PORT || 9090;
-const HOST = process.env.HOST || 'http://localhost:';
+const PROTOCOL = process.env.PROTOCOL || 'http://';
+const HOST = process.env.HOST || 'localhost:';
 
-const server = app.listen(PORT, () => console.log(`Listening on port ${HOST}${PORT}`));
+const server = app.listen(PORT, () => console.log(`Listening on port ${PROTOCOL}${HOST}${PORT}`));
 
 socketsConnection(server);
 
@@ -31,5 +34,6 @@ app.get('/queries', (req, res, next) => {
 });
 
 app.use('/test', testRoute);
+app.use('/setup-vars', setupVars);
 
 module.exports = server;
