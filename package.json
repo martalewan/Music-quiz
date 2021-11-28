@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "cd ./client && npm run start",
-    "build": "cd ./client && npm run build",
-    "server": "nodemon",
-    "start": "node index.js && npm run build",
-    "dev": "npm run client && npm run server"
+    "client": "cd client && npm run start",
+    "build": "cd client && npm run build",
+    "server": "cross-env NODE_ENV=development nodemon",
+    "start": "cross-env NODE_ENV=production npm run build && node index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -22,12 +22,15 @@
   },
   "homepage": "https://github.com/martalewan/Music-quiz#readme",
   "dependencies": {
+    "concurrently": "^6.4.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "http-proxy-middleware": "^2.0.1",
     "pg": "^8.7.1",
     "ws": "^8.3.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint-config-salt": "^1.1.0",
     "nodemon": "^2.0.15"
   }
