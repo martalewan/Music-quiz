@@ -5,7 +5,6 @@ require('dotenv').config();
 
 const socketsConnection = require('./server/sockets')
 const testRoute = require('./server/routes/test');
-const setupVars = require('./server/routes/setup-vars');
 
 const db = require('./server/db/connection'); 
 

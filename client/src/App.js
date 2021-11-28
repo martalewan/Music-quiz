@@ -3,15 +3,15 @@ import survivor from './music/survivor.mp3';
 
 const App = () => {
   useEffect(() => {
-      const HOST = window.location.origin.replace(/^http/, 'ws');
-      const socket = new WebSocket(HOST);
+    const HOST = window.location.origin.replace(/^http/, 'ws');
+    const socket = new WebSocket(HOST);
 
-      socket.addEventListener('message', e => {
-        console.log('BANANANANANA', e.data);
-      });
-      socket.addEventListener('open', () => {
-        console.log('Frontend is open for papi');
-      });
+    socket.addEventListener('message', e => {
+      console.log('BANANANANANA', e.data);
+    });
+    socket.addEventListener('open', () => {
+      console.log('Frontend is open for papi');
+    });
   }, []);
 
   return (
