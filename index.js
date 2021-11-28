@@ -9,7 +9,7 @@ const setupVars = require('./server/routes/setup-vars');
 
 const db = require('./server/db/connection'); 
 
-const PORT = process.env.PORT || 9090;
+const PORT = process.env.PORT || 9999;
 const PROTOCOL = process.env.PROTOCOL || 'http://';
 const HOST = process.env.HOST || 'localhost:';
 
