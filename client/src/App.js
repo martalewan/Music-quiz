@@ -6,7 +6,7 @@ const App = () => {
     const getEnvVars = async () => {
       const vars = await fetch('/setup-vars/env-url').catch(err => console.err(err));
       const { HOST, PORT } = await vars.json();
-
+      console.log(PORT);
       const socket = new WebSocket(`ws://${HOST}${PORT}`);
 
       socket.addEventListener('message', e => {
