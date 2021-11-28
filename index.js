@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 9999;
 const PROTOCOL = process.env.PROTOCOL || 'http://';
 const HOST = process.env.HOST || 'localhost:';
 
-const server = app.listen(PORT, () => console.log(`Listening on port ${PROTOCOL}${HOST}${PORT}`));
+const server = app.listen(PORT, '0.0.0.0', () => console.log(`Listening on port ${PROTOCOL}${HOST}${PORT}`));
 
 socketsConnection(server);
 

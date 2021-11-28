@@ -3,10 +3,8 @@ import survivor from './music/survivor.mp3';
 
 const App = () => {
   const getEnvVars = async () => {
-    const vars = await fetch('/setup-vars/env-url').catch(err => console.err(err));
-    const { HOST, PORT } = await vars.json();
-
-    const socket = new WebSocket(`ws://${HOST}${PORT}`);
+    var HOST = location.origin.replace(/^http/, 'ws')
+    const socket = new WebSocket(HOST);
 
     socket.addEventListener('message', e => {
       console.log('BANANANANANA', e.data);
