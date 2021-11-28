@@ -7,7 +7,8 @@ const App = () => {
       const vars = await fetch('/setup-vars/env-url').catch(err => console.err(err));
       const { HOST, PORT } = await vars.json();
       console.log(PORT);
-      const socket = new WebSocket(`ws://${HOST}${PORT}`);
+      // const socket = new WebSocket(`ws://${HOST}${PORT}`);
+      const socket = new WebSocket(`ws://localhost:9999`);
 
       socket.addEventListener('message', e => {
         console.log('BANANANANANA', e.data);
