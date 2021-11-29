@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import survivor from './music/survivor.mp3';
+import LoginPage from './pages/Login/Login-page';
 
 const App = () => {
   useEffect(() => {
@@ -18,6 +19,7 @@ const App = () => {
     <div className="App">
       The Music Quiz
       <p>This is a new paragraph</p>
+      <LoginPage />
       <audio controls>
         <source src={survivor} type="audio/mp3" />
         Your browser does not support the audio element.

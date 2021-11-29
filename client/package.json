@@ -17,7 +17,7 @@
     "build": "BUILD_PATH='../dist' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint '**/*.js' --fix"
+    "lint": "eslint **/*.js --fix"
   },
   "eslintConfig": {
     "extends": [
