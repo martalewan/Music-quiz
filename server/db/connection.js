@@ -1,4 +1,4 @@
-const { Pool, Client } = require('pg');
+const { Pool } = require('pg');
 require('dotenv').config();
 
 // import package 'pg' here and get the connection from the connection pool
