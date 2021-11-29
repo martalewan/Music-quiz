@@ -1,10 +1,11 @@
 const express = require('express');
 const app = require('express')();
 const path = require('path');
+const cors = require('cors');
 require('dotenv').config();
 
 const socketsConnection = require('./server/sockets')
-const testRoute = require('./server/routes/test');
+const userRoutes = require('./server/routes/userRoutes');
 
 const db = require('./server/db/connection'); 
 
@@ -17,6 +18,8 @@ const server = app.listen(PORT, '0.0.0.0', () => console.log(`Listening on port 
 socketsConnection(server);
 
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.json());
+app.use(cors());
 
 // app.get('/*', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
@@ -32,6 +35,6 @@ app.get('/queries', (req, res, next) => {
   })
 });
 
-app.use('/test', testRoute);
+app.use('/api/users', userRoutes);
 
 module.exports = server;
