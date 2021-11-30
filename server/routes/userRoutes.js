@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const db = require('../db/connection'); 
 
-router.get('/users/', (req, res) => {
+router.get('/users', (req, res) => {
   res.send('main');
 });
 
@@ -44,6 +44,7 @@ router.get('/users/:username', (req, res, next) => {
       if (err) {
         return next(err)
       }
+      res.cookie('user', JSON.stringify(userData.rows[0]));
       res.send(userData.rows[0]);
     });
   } catch (err) {

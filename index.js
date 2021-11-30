@@ -4,6 +4,7 @@ const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
 
+const cookieParser = require('cookie-parser');
 const socketsConnection = require('./server/sockets')
 const userRoutes = require('./server/routes/userRoutes');
 
@@ -20,6 +21,7 @@ socketsConnection(server);
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 // app.get('/*', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
