@@ -30,11 +30,10 @@ app.get('/queries', (req, res, next) => {
     if(err){
       return next(err);
     }
-    console.log('DB_INTRO_QUERY: ', result.rows);
     res.send(result.rows);
   })
 });
 
-app.use('/api/users', userRoutes);
+app.use('/api', userRoutes);
 
 module.exports = server;

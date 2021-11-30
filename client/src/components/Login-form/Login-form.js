@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import Button from '../Button/Button';
 import TextInput from '../Text-input/Text-input';
-import { saveUser } from '../../redux/actions';
+import { saveUser, setUserLoggedIn } from '../../redux/actions';
 
 const initialState = { username: '', password: '' };
 
@@ -18,6 +18,7 @@ const fetchUser = ([formState, setFormState]) => (
     const fetchData = await fetch('/api/users', requestOptions);
     const data = await fetchData.json();
     dispatch(saveUser(data));
+    dispatch(setUserLoggedIn());
     setFormState(initialState);
     return true;
   }

@@ -1,9 +1,12 @@
-const Button = ({ type, className, innerText }) => (
+const Button = ({
+  type, className, innerText, onClickFunc,
+}) => (
   <button
-    type = {type}
-    className = {`btn ${className}__btn`}
+    type={type}
+    className={`btn ${className}__btn`}
+    onClick={onClickFunc}
   >
-  {innerText}
+    {innerText}
   </button>
 );
 

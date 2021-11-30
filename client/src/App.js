@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
-import survivor from './music/survivor.mp3';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/Login/Login-page';
+import Quiz from './pages/Quiz/Quiz';
+import UserHub from './pages/UserHub/UserHub';
+import Instructions from './pages/Instructions/Instructions-page';
 
 const App = () => {
   useEffect(() => {
@@ -8,7 +11,7 @@ const App = () => {
     const socket = new WebSocket(HOST);
 
     socket.addEventListener('message', e => {
-      console.log('BANANANANANA', e.data);
+      console.log('e.data', e.data);
     });
     socket.addEventListener('open', () => {
       console.log('Frontend is open for papi');
@@ -16,15 +19,17 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      The Music Quiz
-      <p>This is a new paragraph</p>
-      <LoginPage />
-      <audio controls>
-        <source src={survivor} type="audio/mp3" />
-        Your browser does not support the audio element.
-      </audio>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/userhub" element={<UserHub />} />
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/instructions" element={<Instructions />} />
+
+          </Routes>
+      </div>
+    </BrowserRouter>
   );
 };
 
