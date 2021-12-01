@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import songs from '../../music';
 import Player from '../../components/Player/Player';
 import Button from '../../components/Button/Button';
+import QuizChoices from '../../components/Quiz-choices/Quiz-choices';
 
 const fetchSongsList = async setSongsList => {
   const requestOptions = {
@@ -41,6 +42,7 @@ const Quiz = () => {
         type='submit'
         innerText='PLAY THE GAME'
       />
+      {currentSong && <QuizChoices currentSong={currentSong} songsList={songsList} />}
       <button onClick= {setNextSong}>CLICK IT</button>
       { currentSong && <Player playingSong={currentSong} songs={songs}/> }
     </>
