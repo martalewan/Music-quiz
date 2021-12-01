@@ -8,7 +8,6 @@ import UserHub from './pages/UserHub/UserHub';
 import Instructions from './pages/Instructions/Instructions-page';
 import { saveUser, setUserLoggedIn } from './redux/actions';
 import Navigation from './components/Navigation/Navigation';
-import './App.css';
 
 const App = () => {
   const dispatch = useDispatch();

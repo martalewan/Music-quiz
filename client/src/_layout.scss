@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&display=swap');
+:root {
+  --ashy: #b7b7a4;
+  --creemy: #f1f0e8;
+  --dark-bottle: #3c3e35;
+  --inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--desert-sand), inset -0.2rem -0.2rem 0.5rem rgb(230, 209, 209);
+}
+
+html {
+  box-sizing: border-box;
+  min-height: 100%;
+  position: relative;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: 'Hind Madurai', sans-serif;
+}
+
+body {
+  background-color: var(--creemy);
+}
+
+.App {
+  height:100%;
+}

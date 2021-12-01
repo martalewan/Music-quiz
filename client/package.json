@@ -6,8 +6,10 @@
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "can-ndjson-stream": "^1.0.2",
     "http-proxy-middleware": "^2.0.1",
     "react": "^17.0.2",
+    "react-audio-player": "^0.17.0",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router": "^6.0.2",
@@ -16,6 +18,7 @@
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
+    "sass": "^1.44.0",
     "universal-cookie": "^4.0.4",
     "web-vitals": "^1.1.2"
   },
