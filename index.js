@@ -7,6 +7,7 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const socketsConnection = require('./server/sockets')
 const userRoutes = require('./server/routes/userRoutes');
+const songsRoutes = require('./server/routes/songsRoutes')
 
 const db = require('./server/db/connection'); 
 
@@ -37,5 +38,7 @@ app.get('/queries', (req, res, next) => {
 });
 
 app.use('/api', userRoutes);
+app.use('/api', songsRoutes);
+
 
 module.exports = server;
