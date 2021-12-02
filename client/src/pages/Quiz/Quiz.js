@@ -7,6 +7,8 @@ import Player from '../../components/Player/Player';
 import QuizChoices from '../../components/Quiz-choices/Quiz-choices';
 import SongResult from '../../components/Song-result/Song-result';
 import TimerComponent from '../../components/Timer/Timer';
+import EndGame from '../../components/End-game/End-game';
+
 
 const fetchSongsList = async setSongsList => {
   const requestOptions = {
@@ -27,15 +29,27 @@ const Quiz = () => {
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [isCountdown, setIsCountdown] = useState(true);
   const [songPoints, setSongPoints] = useState(1500);
-  const [numberOfSongs, setNumberOfSongs] = useState(3);
+  const [numberOfSongs, setNumberOfSongs] = useState(5);
+  const [gameOver, setGameOver] = useState(false);
  
   useEffect(() => {
+    setNumberOfSongs(5);
+    setGameOver(false);
     fetchSongsList(setSongsList);
   }, []); 
   
   useEffect(() => {
     setCurrentSong(songsList[playingSongIndex])
   }, [songsList, playingSongIndex]);
+
+  console.log('SONGLIST', songsList);
+  console.log('CURRENTSONG', currentSong);
+
+  useEffect(() => {
+    if (numberOfSongs === 0) {
+      setGameOver(true);
+    }
+  }, [numberOfSongs]);
 
   const setNextSong = () => {
     setAnswered(false);
@@ -53,6 +67,7 @@ const Quiz = () => {
       { currentSong
         && !answered
         && !isCountdown
+        && !gameOver
         && <>
           <Player playingSong={currentSong} songs={songs}/> 
           <QuizChoices 
@@ -63,17 +78,21 @@ const Quiz = () => {
             setPlayingSongIndex={setPlayingSongIndex}
             setSongPoints={setSongPoints}
             songPoints={songPoints}
+            numberOfSongs={numberOfSongs}
+            setNumberOfSongs={setNumberOfSongs}
           />
         </>
       }
       {answered
         && !isCountdown
+        && !gameOver
         && <SongResult 
           correctAnswer={correctAnswer} 
           setNextSong={setNextSong}
           songPoints={songPoints}
         /> 
       }
+      {gameOver && <EndGame />}
     </section>
   );
 };

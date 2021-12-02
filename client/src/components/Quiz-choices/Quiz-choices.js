@@ -7,6 +7,7 @@ import { setUserPoints } from '../../redux/actions';
 const QuizChoices = ({
   currentSong,
   songsList, setAnswered, setCorrectAnswer, setPlayingSongIndex, setSongPoints, songPoints,
+  setNumberOfSongs, numberOfSongs,
 }) => {
   const [songChoices, setSongChoices] = useState();
   const dispatch = useDispatch();
@@ -29,6 +30,8 @@ const QuizChoices = ({
   }, []);
 
   const handleAnswer = e => {
+    setNumberOfSongs(songs => songs - 1);
+    console.log(numberOfSongs);
     if (!e) {
       setCorrectAnswer(false);
       return setAnswered(true);
@@ -63,7 +66,7 @@ const QuizChoices = ({
           />
         ))
       }
-      <TimerComponent time={5} timerAction={userChoice} setSongPoints={setSongPoints} />
+      <TimerComponent time={15} timerAction={userChoice} setSongPoints={setSongPoints} />
     </article>
   );
 };
