@@ -7,24 +7,31 @@ const musicFolder = fs.readdirSync(musicPath);
 const randomizeSongs = require('../db/songs-handler');
 
 router.get('/songs', (req, res) => {
-  const randomizedSongs = randomizeSongs(musicFolder);
-  res.send(randomizedSongs);
+  let randomizedSongs = randomizeSongs(musicFolder);
+  const randomizedSongsName = randomizedSongs.map(song => song.replace(/.mp3/, ''));
+  res.send(randomizedSongsName);
 })
 
 router.get('/songs/stream', (req, res) => {
-  const songFile = req.body.songFile;
-  const filePath = `../db/music/${songFile}`;
-  console.log(songFile)
+  console.log('songRoutes', req.headers.songfile);
+  const songFile = req.headers.songfile;
+  const filePath = path.resolve(__dirname, '../db/music', songFile);
   const stat = fs.statSync(filePath);
 
-  response.writeHead(200, {
+  res.writeHead(200, {
     'Content-Type': 'audio/mpeg',
     'Content-Length': stat.size
   });
 
   const readStream = fs.createReadStream(filePath);
-  // We replaced all the event handlers with a simple call to readStream.pipe()
-  readStream.pipe(res);
-})
+  
+  readStream.on('open', () => {
+    readStream.pipe(res);
+  });
+
+  readStream.on('error', err => {
+    res.end(err);
+  });
+});
 
 module.exports = router;

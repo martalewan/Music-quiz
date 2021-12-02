@@ -8,6 +8,7 @@ import UserHub from './pages/UserHub/UserHub';
 import Instructions from './pages/Instructions/Instructions-page';
 import { saveUser, setUserLoggedIn } from './redux/actions';
 import Navigation from './components/Navigation/Navigation';
+import EndGame from './components/End-game/End-game';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/userhub" element={<UserHub />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/instructions" element={<Instructions />} />
+          <Route path="/results" element={<EndGame />} />
         </Routes>
       </div>
     </BrowserRouter>

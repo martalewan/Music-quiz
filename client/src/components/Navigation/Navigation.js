@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserLoggedOut } from '../../redux/actions';
-import Button from '../Button/Button';
 
 const Navigation = () => {
   const { isUserLoggedIn } = useSelector(state => state);
@@ -20,13 +19,11 @@ const Navigation = () => {
   return (
     <nav className="nav">
       <Link to='/' >
-        <p className="nav__logo">Logo</p>
+        <p className="nav__logo">Musvavors</p>
       </Link>
-      {isUserLoggedIn && <Button
-        className="nav-logout"
-        onClickFunc={handleLogoutClick}
-        innerText='LOGOUT'
-      />}
+      {isUserLoggedIn && <button
+      className="nav-logout__btn"
+      onClick={handleLogoutClick}>LOGOUT</button>}
     </nav>
   );
 };
