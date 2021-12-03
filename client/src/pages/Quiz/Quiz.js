@@ -31,8 +31,10 @@ const Quiz = () => {
   const [songPoints, setSongPoints] = useState(gameConfig.gamePoints);
   const [numberOfSongs, setNumberOfSongs] = useState(gameConfig.songNumber);
   const [gameOver, setGameOver] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
  
   useEffect(() => {
+    setIsPlaying(false);
     setNumberOfSongs(gameConfig.songNumber);
     setGameOver(false);
     fetchSongsList(setSongsList);
@@ -47,6 +49,13 @@ const Quiz = () => {
       setGameOver(true);
     }
   }, [numberOfSongs]);
+
+  // useEffect(() => {
+  //   if (isPlaying) {
+  //     return setIsCountdown(true);
+  //   }
+  //   return false;
+  // }, [isPlaying])
 
   const setNextSong = () => {
     setAnswered(false);
@@ -66,7 +75,11 @@ const Quiz = () => {
         && !isCountdown
         && !gameOver
         && <>
-          <Player playingSong={currentSong} songs={songs}/> 
+          <Player
+            playingSong={currentSong}
+            songs={songs}
+            setIsPlaying={setIsPlaying}
+          /> 
           <QuizChoices 
             currentSong={currentSong}
             songsList={songsList}
@@ -77,6 +90,7 @@ const Quiz = () => {
             songPoints={songPoints}
             numberOfSongs={numberOfSongs}
             setNumberOfSongs={setNumberOfSongs}
+            isPlaying={isPlaying}
           />
         </>
       }

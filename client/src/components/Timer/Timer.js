@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const TimerComponent = ({ time, timerAction, setSongPoints }) => {
+const TimerComponent = ({
+  time, timerAction, setSongPoints, isPlaying,
+}) => {
   const [timer, setTimer] = useState(time);
+
+  console.log(isPlaying);
 
   useEffect(() => {
     const countdown = setInterval(() => {

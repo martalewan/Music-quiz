@@ -10,13 +10,15 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   &__logo {
     all: unset;
-    color: black;
-    font-size: 15px;
+    font-size: 18px;
     letter-spacing: 1px;
     text-decoration: none;
+    color: #5C7B7D;
   }
 }
 
@@ -24,5 +26,10 @@
   background-color: transparent;
   border: none;
   letter-spacing: 1px;
+  font-size: 18px;
+  color: #5C7B7D;
+}
+.nav-logout__btn:hover {
+  cursor: pointer;
 }
 

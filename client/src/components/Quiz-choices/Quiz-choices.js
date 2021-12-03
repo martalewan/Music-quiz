@@ -7,31 +7,32 @@ import { setUserPoints } from '../../redux/actions';
 const QuizChoices = ({
   currentSong,
   songsList, setAnswered, setCorrectAnswer, setPlayingSongIndex, setSongPoints, songPoints,
-  setNumberOfSongs, numberOfSongs,
+  setNumberOfSongs, isPlaying,
 }) => {
   const [songChoices, setSongChoices] = useState();
   const { gameConfig } = useSelector(state => state);
   const dispatch = useDispatch();
 
-  const randomizer = list => list.sort(() => Math.random() - 0.5);
+  const randomizeSongs = list => [...list].sort(() => Math.random() - 0.5);
   const filterSongs = list => list.filter(song => song !== currentSong);
 
   useEffect(() => {
     (async () => {
-      const filteredRandomSong = await filterSongs(songsList);
-      setSongChoices(randomizer([
+      const randomSongs = await randomizeSongs(songsList);
+      const filteredRandomSong = await filterSongs(randomSongs);
+      const answers = filteredRandomSong.slice(0, gameConfig.numberOfAnswers - 1);
+
+      setSongChoices(randomizeSongs([
         currentSong,
-        filteredRandomSong[0],
-        filteredRandomSong[1],
+        ...answers,
       ]));
       setSongPoints(gameConfig.gamePoints);
     }
     )();
-  }, []);
+  }, [currentSong]);
 
   const handleAnswer = e => {
     setNumberOfSongs(songs => songs - 1);
-    console.log(numberOfSongs);
     if (!e) {
       setCorrectAnswer(false);
       return setAnswered(true);
@@ -55,18 +56,19 @@ const QuizChoices = ({
   };
   return (
     <article className='quiz__choices'>
-      <TimerComponent time={gameConfig.songTimer}
+      <TimerComponent
+        time={gameConfig.songTimer}
         timerAction={userChoice}
         setSongPoints={setSongPoints}
+        isPlaying={isPlaying}
       />
       {songChoices
         && songChoices.map((song, index) => (
           <ButtonChoice
             key={index}
-            innerText={song}
+            song={song}
             className='quiz'
             onClickFunc={userChoice}
-            value={song}
           />
         ))
       }

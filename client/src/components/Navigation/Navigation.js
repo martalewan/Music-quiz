@@ -18,8 +18,8 @@ const Navigation = () => {
 
   return (
     <nav className="nav">
-      <Link to='/' >
-        <p className="nav__logo">Musvavors</p>
+      <Link className='link' to='/' >
+        <p className="nav__logo">MUSICVAVORS</p>
       </Link>
       {isUserLoggedIn && <button
       className="nav-logout__btn"

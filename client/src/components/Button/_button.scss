@@ -25,20 +25,25 @@
   touch-action: manipulation;
   vertical-align: baseline;
   width: 13rem ;
+  margin-top: 2rem;
+  text-decoration: inherit;
 }
 
 .btn:hover,
 .btn:focus {
   background-color: #5C7B7D;
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  text-decoration: inherit;
 }
 
 .btn:hover {
   transform: translateY(-1px);
+  text-decoration: inherit;
 }
 
 .btn:active {
   background-color: #c85000;
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(0);
+  text-decoration: inherit;
 }

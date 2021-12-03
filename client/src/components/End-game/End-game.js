@@ -7,7 +7,7 @@ const EndGame = () => {
   return (
   <article className='game-result'>
       <h2>Your total score is {userPoints}</h2>
-      <Link to='/' >
+      <Link className='link' to='/' >
         <Button
           className='game-result__exit'
           type='submit'

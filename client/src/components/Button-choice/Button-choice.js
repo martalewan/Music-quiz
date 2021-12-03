@@ -1,13 +1,13 @@
 const ButtonChoice = ({
-  type, className, innerText, onClickFunc, value,
+  type, className, song, onClickFunc,
 }) => (
   <button
     type={type}
     className={`btn ${className}__btn-game`}
     onClick={onClickFunc}
-    value={value}
+    value={song}
   >
-    {innerText}
+    {song.replaceAll('_', ' ')}
   </button>
 );
 
