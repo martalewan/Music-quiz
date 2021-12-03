@@ -41,7 +41,8 @@ const Quiz = () => {
   }, []); 
   
   useEffect(() => {
-    setCurrentSong(songsList[playingSongIndex])
+    setCurrentSong(songsList[playingSongIndex]);
+    console.log(playingSongIndex);
   }, [songsList, playingSongIndex]);
 
   useEffect(() => {
@@ -60,6 +61,7 @@ const Quiz = () => {
   const setNextSong = () => {
     setAnswered(false);
     setIsCountdown(true);
+    setPlayingSongIndex(index => index + 1);
   };
 
   return (
@@ -85,7 +87,6 @@ const Quiz = () => {
             songsList={songsList}
             setAnswered={setAnswered}
             setCorrectAnswer={setCorrectAnswer}
-            setPlayingSongIndex={setPlayingSongIndex}
             setSongPoints={setSongPoints}
             songPoints={songPoints}
             numberOfSongs={numberOfSongs}

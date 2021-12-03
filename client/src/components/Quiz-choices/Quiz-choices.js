@@ -6,7 +6,7 @@ import { setUserPoints } from '../../redux/actions';
 
 const QuizChoices = ({
   currentSong,
-  songsList, setAnswered, setCorrectAnswer, setPlayingSongIndex, setSongPoints, songPoints,
+  songsList, setAnswered, setCorrectAnswer, setSongPoints, songPoints,
   setNumberOfSongs, isPlaying,
 }) => {
   const [songChoices, setSongChoices] = useState();
@@ -51,7 +51,6 @@ const QuizChoices = ({
       return handleAnswer();
     }
     e.preventDefault();
-    setPlayingSongIndex(counter => counter + 1);
     return handleAnswer(e);
   };
   return (
