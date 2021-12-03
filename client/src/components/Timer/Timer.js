@@ -5,25 +5,48 @@ const TimerComponent = ({
 }) => {
   const [timer, setTimer] = useState(time);
 
-  console.log(isPlaying);
+  useEffect(() => {
+    if (typeof isPlaying === 'undefined') {
+      const countdown = setInterval(() => {
+        setTimer(counter => counter - 1);
+        if (setSongPoints) {
+          setSongPoints(points => points - 100);
+        }
+      }, 1000);
+
+      const timeout = setTimeout(() => {
+        timerAction(false);
+      }, timer * 1000);
+
+      return () => {
+        clearInterval(countdown);
+        clearTimeout(timeout);
+      };
+    }
+
+    return false;
+  }, []);
 
   useEffect(() => {
-    const countdown = setInterval(() => {
-      setTimer(counter => counter - 1);
-      if (setSongPoints) {
-        setSongPoints(points => points - 100);
-      }
-    }, 1000);
+    if (isPlaying) {
+      const countdown = setInterval(() => {
+        setTimer(counter => counter - 1);
+        if (setSongPoints) {
+          setSongPoints(points => points - 100);
+        }
+      }, 1000);
 
-    const timeout = setTimeout(() => {
-      timerAction(false);
-    }, timer * 1000);
+      const timeout = setTimeout(() => {
+        timerAction(false);
+      }, timer * 1000);
 
-    return () => {
-      clearInterval(countdown);
-      clearTimeout(timeout);
-    };
-  }, []);
+      return () => {
+        clearInterval(countdown);
+        clearTimeout(timeout);
+      };
+    }
+    return false;
+  }, [isPlaying]);
 
   return (<h1 className='song-timer'>{timer}</h1>);
 };

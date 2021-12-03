@@ -1,46 +1,38 @@
-// .login-form__input {
-//   display: flex;
-//   flex-direction: column;
-// }
+.login-form__input {
+  display: flex;
+  flex-direction: column;
+}
 
-// .login-form__input {
-//     max-width: 600px;
-//     width: 100%;
-//     color: var(--ashy);
-//     font-size: 16px;
-//     letter-spacing: .6px;
-//     background: none;
-//     font-weight: 300;
-//     border: .2px solid rgb(232, 238, 219);
-//     padding: .2rem;
-//     caret-color: white;
-//     margin-bottom: 1rem;
-//     transition: all 0.25s;
-// }
+.login-form__input {
+   margin-top: 2rem;
+    max-width: 13rem;
+    color: black;
+    font-size: 16px;
+    letter-spacing: .6px;
+    background: none;
+    font-weight: 300;
+    border: .2px solid black;
+    padding: .2rem;
+    caret-color: black;
+    margin-bottom: 1rem;
+    transition: all 0.25s;
+}
 
-// .login-form__input {
-//     resize: none;
-//     overflow: hidden;
-//     height: 6.5rem;
-//     ;
-// }
+.login-form__input::placeholder {
+    opacity: .9;
+    font-weight: 200;
+}
 
-// .login-form__input::placeholder,
-// .login-form__input::placeholder {
-//     color: var(--ebony);
-//     opacity: .5;
-//     font-weight: 200;
-// }
+.login-form__input:focus {
+    padding: .2rem;
+    outline: none;
+    font-weight: 200;
+}
 
-// .login-form__input:focus,
-// .login-form__input:focus {
-//     padding: .2rem;
-//     outline: none;
-//     color: white;
-//     font-weight: 200;
-// }
+.login-form__input:hover {
+    background-color: rgba(255, 255, 255, 0.058);
+}
 
-// .login-form__input:hover,
-// .login-form__input:hover {
-//     background-color: rgba(255, 255, 255, 0.058);
-// }
+.hidden {
+  display: none;
+}

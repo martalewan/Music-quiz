@@ -18,7 +18,7 @@ const LoginPage = () => {
   return (
     <section className='login-wrapper'>
       <Title title='HELLO YOU' />
-      <p>Enter your username to create a music quiz</p>
+      <p className='login-wrapper__description'>Enter your username to create a music quiz</p>
       <LoginForm />
     </section>
   );

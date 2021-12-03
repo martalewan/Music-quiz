@@ -1,25 +1,40 @@
-const Instructions = () => (
+import { useSelector } from 'react-redux';
+
+const Instructions = () => {
+  const { gameConfig } = useSelector(state => state);
+
+  return (
   <section className='instruction-wrapper'>
     <h2 className='instruction-wrapper__title'>Instructions</h2>
-    <p className='instruction-description--title'>Welcome to our music quiz!</p>
-    <p className='instruction-description'>Music Quiz’ is a fun single-player game
+    <p className='instruction-description--title'>
+    Welcome to our music quiz!
+    </p>
+    <p className='instruction-description'>
+      Music Quiz’ is a fun single-player game
       where you can test you music knowledge!
     </p>
     <p className='instruction-description'>
-      Start the game by pressing the 'Start' button.
-      A 3 second countdown then starts. After the countdown, the actual gameplay begins.
-      You got 15 seconds to make your guess, and you got multiple choices, where there is
-      ONLY one correct answer.
+      Start the game by pressing the "Start" button.
+      A 3 second countdown will then start. After the countdown, the actual gameplay begins,
+      so be ready!
+      You got 15 seconds to make your guess, with multiple choices.
+      There is ONLY one correct answer.
     </p>
     <p className='instruction-description'>
-      Each time you will hear 15 seconds of intro.
-      Dont worry there is a countdown so you can prepare.
-      Your score will based on your time of response.
+      The point system is time based. The faster you get the correct answer,
+      the more points you will recieve.
+      Be aware, wrong answers will award NO points.
+    </p>
+    <p className='instruction-description'>
+      Each game consists of {gameConfig.songNumber} rounds.
+      After each game your total score will be displayed
+      and saved to the leaderboard.
     </p>
     <p className='instruction-description--last'>
       Good luck and have fun!
     </p>
   </section>
-);
+  );
+};
 
 export default Instructions;
