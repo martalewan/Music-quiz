@@ -5,7 +5,7 @@ const Instructions = () => {
 
   return (
   <section className='instruction-wrapper'>
-    <h2 className='instruction-wrapper__title'>Instructions</h2>
+    <h2 className='instruction-wrapper__title'>HOW TO PLAY?</h2>
     <p className='instruction-description--title'>
     Welcome to our music quiz!
     </p>
@@ -15,6 +15,8 @@ const Instructions = () => {
     </p>
     <p className='instruction-description'>
       Start the game by pressing the "Start" button.
+    </p>
+    <p className='instruction-description'>
       A 3 second countdown will then start. After the countdown, the actual gameplay begins,
       so be ready!
       You got 15 seconds to make your guess, with multiple choices.
@@ -32,6 +34,9 @@ const Instructions = () => {
     </p>
     <p className='instruction-description--last'>
       Good luck and have fun!
+    </p>
+    <p className='instruction-description--last'>
+      Survivors team xoxo
     </p>
   </section>
   );

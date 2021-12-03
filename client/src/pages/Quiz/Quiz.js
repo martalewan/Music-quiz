@@ -42,7 +42,6 @@ const Quiz = () => {
   
   useEffect(() => {
     setCurrentSong(songsList[playingSongIndex]);
-    console.log(playingSongIndex);
   }, [songsList, playingSongIndex]);
 
   useEffect(() => {
