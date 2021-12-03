@@ -21,7 +21,7 @@ const TimerComponent = ({ time, timerAction, setSongPoints }) => {
     };
   }, []);
 
-  return (<h1>{timer}</h1>);
+  return (<h1 className='song-timer'>{timer}</h1>);
 };
 
 export default TimerComponent;

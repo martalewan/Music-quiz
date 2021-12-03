@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ButtonChoice from '../Button-choice/Button-choice';
 import TimerComponent from '../Timer/Timer';
 import { setUserPoints } from '../../redux/actions';
@@ -10,21 +10,21 @@ const QuizChoices = ({
   setNumberOfSongs, numberOfSongs,
 }) => {
   const [songChoices, setSongChoices] = useState();
+  const { gameConfig } = useSelector(state => state);
   const dispatch = useDispatch();
 
-  const randomizeSongs = list => list.sort(() => Math.random() - 0.5);
+  const randomizer = list => list.sort(() => Math.random() - 0.5);
   const filterSongs = list => list.filter(song => song !== currentSong);
 
   useEffect(() => {
     (async () => {
-      const randomSongs = await randomizeSongs(songsList);
-      const filteredRandomSong = await filterSongs(randomSongs);
-      setSongChoices(randomizeSongs([
+      const filteredRandomSong = await filterSongs(songsList);
+      setSongChoices(randomizer([
         currentSong,
         filteredRandomSong[0],
         filteredRandomSong[1],
       ]));
-      setSongPoints(1500);
+      setSongPoints(gameConfig.gamePoints);
     }
     )();
   }, []);
@@ -55,6 +55,10 @@ const QuizChoices = ({
   };
   return (
     <article className='quiz__choices'>
+      <TimerComponent time={gameConfig.songTimer}
+        timerAction={userChoice}
+        setSongPoints={setSongPoints}
+      />
       {songChoices
         && songChoices.map((song, index) => (
           <ButtonChoice
@@ -66,7 +70,6 @@ const QuizChoices = ({
           />
         ))
       }
-      <TimerComponent time={15} timerAction={userChoice} setSongPoints={setSongPoints} />
     </article>
   );
 };

@@ -1,7 +1,6 @@
 /* eslint-disable */
-import {
-  useState, useEffect
-} from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import songs from '../../music';
 import Player from '../../components/Player/Player';
 import QuizChoices from '../../components/Quiz-choices/Quiz-choices';
@@ -22,18 +21,19 @@ const fetchSongsList = async setSongsList => {
 };
 
 const Quiz = () => {
+  const { gameConfig } = useSelector(state => state);
   const [songsList, setSongsList] = useState([]);
   const [currentSong, setCurrentSong] = useState();
   const [playingSongIndex, setPlayingSongIndex] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [isCountdown, setIsCountdown] = useState(true);
-  const [songPoints, setSongPoints] = useState(1500);
-  const [numberOfSongs, setNumberOfSongs] = useState(5);
+  const [songPoints, setSongPoints] = useState(gameConfig.gamePoints);
+  const [numberOfSongs, setNumberOfSongs] = useState(gameConfig.songNumber);
   const [gameOver, setGameOver] = useState(false);
  
   useEffect(() => {
-    setNumberOfSongs(5);
+    setNumberOfSongs(gameConfig.songNumber);
     setGameOver(false);
     fetchSongsList(setSongsList);
   }, []); 
@@ -41,9 +41,6 @@ const Quiz = () => {
   useEffect(() => {
     setCurrentSong(songsList[playingSongIndex])
   }, [songsList, playingSongIndex]);
-
-  console.log('SONGLIST', songsList);
-  console.log('CURRENTSONG', currentSong);
 
   useEffect(() => {
     if (numberOfSongs === 0) {
