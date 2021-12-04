@@ -1,12 +1,12 @@
 /* eslint-disable */
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import songs from '../../music';
 import Player from '../../components/Player/Player';
 import QuizChoices from '../../components/Quiz-choices/Quiz-choices';
 import SongResult from '../../components/Song-result/Song-result';
 import TimerComponent from '../../components/Timer/Timer';
-import EndGame from '../../components/End-game/End-game';
+import { resetUserPoints } from '../../redux/actions';
 
 
 const fetchSongsList = async setSongsList => {
@@ -32,11 +32,13 @@ const Quiz = () => {
   const [numberOfSongs, setNumberOfSongs] = useState(gameConfig.songNumber);
   const [gameOver, setGameOver] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const dispatch = useDispatch();
  
   useEffect(() => {
     setIsPlaying(false);
     setNumberOfSongs(gameConfig.songNumber);
-    setGameOver(false);
+    console.log('Quiz usereffect');
+    dispatch(resetUserPoints(0));
     fetchSongsList(setSongsList);
   }, []); 
   
@@ -44,11 +46,11 @@ const Quiz = () => {
     setCurrentSong(songsList[playingSongIndex]);
   }, [songsList, playingSongIndex]);
 
-  useEffect(() => {
-    if (numberOfSongs === 0) {
-      setGameOver(true);
-    }
-  }, [numberOfSongs]);
+  // useEffect(() => {
+  //   if (numberOfSongs === 0) {
+  //     setGameOver(true);
+  //   }
+  // }, [numberOfSongs]);
 
   // useEffect(() => {
   //   if (isPlaying) {
@@ -96,14 +98,17 @@ const Quiz = () => {
       }
       {answered
         && !isCountdown
-        && !gameOver
-        && <SongResult 
+        // && !gameOver
+        && <SongResult
+          setGameOver={setGameOver}
+          gameOver={gameOver} 
           correctAnswer={correctAnswer} 
           setNextSong={setNextSong}
           songPoints={songPoints}
+          numberOfSongs={numberOfSongs}
         /> 
       }
-      {gameOver && <EndGame />}
+      {/* {gameOver && <EndGame />} */}
     </section>
   );
 };

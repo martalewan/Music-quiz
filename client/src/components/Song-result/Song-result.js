@@ -1,6 +1,18 @@
+import { useEffect } from 'react';
 import Button from '../Button/Button';
+import EndGame from '../End-game/End-game';
 
-const SongResult = ({ correctAnswer, setNextSong, songPoints }) => (
+const SongResult = ({
+  correctAnswer, setNextSong, songPoints, gameOver, setGameOver, numberOfSongs,
+}) => {
+  useEffect(() => {
+    if (numberOfSongs === 0) {
+      return setGameOver(true);
+    }
+    return true;
+  }, [numberOfSongs]);
+
+  return (
   <article className='song-result'>
     { correctAnswer
       ? <>
@@ -16,13 +28,16 @@ const SongResult = ({ correctAnswer, setNextSong, songPoints }) => (
       <p className='song-result__text'>That was incorrect</p>
        </>
     }
-      <Button
+     {!gameOver ? <Button
         className='login-form'
         type='submit'
         innerText='NEXT SONG'
         onClickFunc={setNextSong}
       />
+       : <EndGame />}
+      {/* {gameOver && <EndGame />} */}
   </article>
-);
+  );
+};
 
 export default SongResult;
