@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Button from '../../components/Button/Button';
 
 const Instructions = () => {
   const { gameConfig } = useSelector(state => state);
@@ -35,9 +37,12 @@ const Instructions = () => {
     <p className='instruction-description--last'>
       Good luck and have fun!
     </p>
-    <p className='instruction-description--last'>
-      Survivors team xoxo
-    </p>
+    <Link className='link' to='/quiz'>
+      <Button
+        className='start-game'
+        innerText='START'
+      />
+    </Link>
   </section>
   );
 };

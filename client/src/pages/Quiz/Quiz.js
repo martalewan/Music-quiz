@@ -98,7 +98,6 @@ const Quiz = () => {
       }
       {answered
         && !isCountdown
-        // && !gameOver
         && <SongResult
           setGameOver={setGameOver}
           gameOver={gameOver} 
@@ -108,7 +107,6 @@ const Quiz = () => {
           numberOfSongs={numberOfSongs}
         /> 
       }
-      {/* {gameOver && <EndGame />} */}
     </section>
   );
 };

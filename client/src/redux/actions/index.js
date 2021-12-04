@@ -25,8 +25,8 @@ export const setUserPoints = points => ({
 });
 
 export const resetUserPoints = points => ({
-    type: RESET_USER_POINTS,
-    payload: points,
+  type: RESET_USER_POINTS,
+  payload: points,
 });
 
 export const setGameConfig = payload => ({
