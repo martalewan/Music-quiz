@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../Button/Button';
 import EndGame from '../End-game/End-game';
-import totalAverageTime from '../../game-logic/stats-logic';
 import { saveAverageRoundTime } from '../../redux/actions';
 
 const SongResult = ({
@@ -14,7 +13,6 @@ const SongResult = ({
   useEffect(() => {
     if (numberOfSongs === 0) {
       dispatch(saveAverageRoundTime(userPoints));
-      console.log(averageTime);
       return setGameOver(true);
     }
     return true;

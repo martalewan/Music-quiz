@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/martalewan/Music-quiz#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "concurrently": "^6.4.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

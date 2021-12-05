@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const socketsConnection = require('./server/sockets')
 const userRoutes = require('./server/routes/userRoutes');
 const songsRoutes = require('./server/routes/songsRoutes')
+const userStatsRoute = require('./server/routes/userStatsRoute');
 
 const db = require('./server/db/connection'); 
 
@@ -39,6 +40,7 @@ app.get('/queries', (req, res, next) => {
 
 app.use('/api', userRoutes);
 app.use('/api', songsRoutes);
+app.use('/api', userStatsRoute);
 
 
 module.exports = server;
