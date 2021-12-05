@@ -1,12 +1,20 @@
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../Button/Button';
 import EndGame from '../End-game/End-game';
+import totalAverageTime from '../../game-logic/stats-logic';
+import { saveAverageRoundTime } from '../../redux/actions';
 
 const SongResult = ({
   correctAnswer, setNextSong, songPoints, gameOver, setGameOver, numberOfSongs,
 }) => {
+  const dispatch = useDispatch();
+  const { userPoints } = useSelector(stats => stats);
+
   useEffect(() => {
     if (numberOfSongs === 0) {
+      dispatch(saveAverageRoundTime(userPoints));
+      console.log(averageTime);
       return setGameOver(true);
     }
     return true;
@@ -23,9 +31,9 @@ const SongResult = ({
         <p className='song-result__title'>Your result is {songPoints} points</p>
       </>
       : <>
-      <p className='song-result__text emojis'>💩</p>
-      <p className='song-result__text'>Sorry!</p>
-      <p className='song-result__text'>That was incorrect</p>
+        <p className='song-result__text emojis'>💩</p>
+        <p className='song-result__text'>Sorry!</p>
+        <p className='song-result__text'>That was incorrect</p>
        </>
     }
      {!gameOver ? <Button

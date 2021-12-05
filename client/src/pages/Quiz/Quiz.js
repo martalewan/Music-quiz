@@ -37,7 +37,6 @@ const Quiz = () => {
   useEffect(() => {
     setIsPlaying(false);
     setNumberOfSongs(gameConfig.songNumber);
-    console.log('Quiz usereffect');
     dispatch(resetUserPoints(0));
     fetchSongsList(setSongsList);
   }, []); 
@@ -45,12 +44,6 @@ const Quiz = () => {
   useEffect(() => {
     setCurrentSong(songsList[playingSongIndex]);
   }, [songsList, playingSongIndex]);
-
-  // useEffect(() => {
-  //   if (numberOfSongs === 0) {
-  //     setGameOver(true);
-  //   }
-  // }, [numberOfSongs]);
 
   // useEffect(() => {
   //   if (isPlaying) {

@@ -53,6 +53,7 @@ const QuizChoices = ({
     e.preventDefault();
     return handleAnswer(e);
   };
+
   return (
     <article className='quiz__choices'>
       <TimerComponent

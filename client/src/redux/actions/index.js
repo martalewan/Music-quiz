@@ -6,6 +6,7 @@ import {
   SET_GAME_CONFIG,
   RESET_USER_POINTS,
 } from './action-types';
+import { saveRoundTime, saveAverageRoundTime } from './game-stats-action';
 
 export const saveUser = user => ({
   type: SAVE_USER,
@@ -15,6 +16,7 @@ export const saveUser = user => ({
 export const setUserLoggedIn = () => ({
   type: SET_USER_LOGGED_IN,
 });
+
 export const setUserLoggedOut = () => ({
   type: SET_USER_LOGGED_OUT,
 });
@@ -33,3 +35,8 @@ export const setGameConfig = payload => ({
   type: SET_GAME_CONFIG,
   payload,
 });
+
+export {
+  saveRoundTime,
+  saveAverageRoundTime,
+};
