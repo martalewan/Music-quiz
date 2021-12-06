@@ -19,17 +19,17 @@ const EndGame = () => {
   return (
   <article className='game-result'>
       <h2>Your total score is {userPoints}</h2>
+      <Link className='link' to='/leaderboard'>
+        <Button
+          className='leaderboard'
+          innerText='LEADERBOARD'
+        />
+      </Link>
       <Link className='link' to='/' >
         <Button
           className='game-result__exit'
           type='submit'
           innerText='EXIT QUIZ'
-        />
-      </Link>
-      <Link className='link' to='/leaderboard'>
-        <Button
-          className='leaderboard'
-          innerText='LEADERBOARD'
         />
       </Link>
   </article>
