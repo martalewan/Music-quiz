@@ -43,6 +43,12 @@ const Instructions = () => {
         innerText='START'
       />
     </Link>
+    <Link className='link' to='/userhub'>
+        <Button
+          className='back'
+          innerText='BACK'
+        />
+      </Link>
   </section>
   );
 };

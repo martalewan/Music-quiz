@@ -3,14 +3,15 @@
 @import './components/Login-form/login-form';
 @import './components/Navigation/navigation';
 @import './components/Player/player';
-@import './components/stats/stats';
 @import './components/Text-input/text-input';
 @import './components/Title/title';
 @import './components/Quiz-choices/quiz-choices';
 @import './components/Button-choice/button-choice';
 @import './components/Timer/timer';
 @import './components/Song-result/song-result';
+@import './components/End-game/end-game';
 
+@import './pages/Leaderboard/leaderboard';
 @import './pages/Instructions/instruction-page';
 @import './pages/Login/login-page';
 @import './pages/Quiz/quiz';

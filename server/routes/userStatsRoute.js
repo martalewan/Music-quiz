@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db/connection');
 
-const getUserID = (username) => {
+const getUserID = (username, next) => {
   const query = {
     name: 'fetch-user',
     text: 'SELECT "username", "userId" FROM public."users" WHERE "username" = $1',
@@ -17,17 +17,35 @@ const getUserID = (username) => {
       resolve(statsData.rows[0].userId);
     })
   });
-}
+};
+
+router.post('/users/stats/high-scores', async (req, res, next) => {
+  try {
+    const { username } = req.body;
+    const userId = await getUserID(username, next);
+    db.query(`
+      INSERT INTO public."high-scores"(
+      "userId", "score", "username", "averageTime") VALUES ('${userId}', '${req.body.totalPoints}', '${username}', '${req.body.averageTotalTime}');`,
+    err => {
+        if (err) {
+          return next(err);
+        }
+        res.end();
+      }
+    );
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.post('/users/stats', async (req, res, next) => {
   try {
     const { username } = req.body;
-    const userId = await getUserID(username);
-
+    const userId = await getUserID(username, next);
     db.query(`
       INSERT INTO public."user-stats"(
-      "userId", "totalPoints", "averageTime", "username") VALUES ('${userId}', '${req.body.totalPoints}', '${req.body.averageTime}', '${username}');`,
-      (err, statsData ) => {
+      "userId", "totalPoints", "averageTime", "username") VALUES ('${userId}', '${req.body.totalPoints}', '${req.body.averageTotalTime}', '${username}');`,
+      err => {
         if (err) {
           return next(err)
         }
@@ -44,7 +62,7 @@ router.get('/users/stats/:userId', (req, res, next) => {
     const { userId } = req.params;
     const query = {
       name: 'fetch-stats',
-      text: 'SELECT  "_id", "totalPoints", "averageTime", "username",  FROM public."user-stats" WHERE "userId" = $1',
+      text: 'SELECT  "_id", "totalPoints", "averageTime", "username" FROM public."user-stats" WHERE "userId" = $1',
       values: [userId],
     }
     db.query(query, (err, userData) => {
@@ -58,24 +76,21 @@ router.get('/users/stats/:userId', (req, res, next) => {
   }
 });
 
-router.post('/users/stats/high-scores', async (req, res, next) => {
+router.get('/users/stats/high-scores/top-10', (_, res, next) => {
   try {
-    const { username } = req.body;
-    console.log(username);
-    const userId = await getUserID(username);
     db.query(`
-      INSERT INTO public."high-scores"(
-      "userId", "score", "username", "averageTime") VALUES ('${userId}', '${req.body.score}', '${username}', '${req.body.averageTime}');`,
-    (err, statsData) => {
+      SELECT * FROM public."high-scores"
+      ORDER BY "score" DESC FETCH FIRST 10 ROWS ONLY;`,
+      (err, userData) => {
         if (err) {
           return next(err);
         }
-        res.end();
+        res.json(userData);
       }
     );
   } catch (err) {
     next(err);
   }
-})
+});
 
 module.exports = router;

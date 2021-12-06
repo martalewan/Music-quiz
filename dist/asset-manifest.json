@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.89db258a.chunk.css",
-    "main.js": "/static/js/main.3303b07d.chunk.js",
-    "main.js.map": "/static/js/main.3303b07d.chunk.js.map",
+    "main.css": "/static/css/main.dbee6027.chunk.css",
+    "main.js": "/static/js/main.f805877f.chunk.js",
+    "main.js.map": "/static/js/main.f805877f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.776c1e0d.js",
     "runtime-main.js.map": "/static/js/runtime-main.776c1e0d.js.map",
-    "static/js/2.dc476d6b.chunk.js": "/static/js/2.dc476d6b.chunk.js",
-    "static/js/2.dc476d6b.chunk.js.map": "/static/js/2.dc476d6b.chunk.js.map",
+    "static/js/2.c7f8c161.chunk.js": "/static/js/2.c7f8c161.chunk.js",
+    "static/js/2.c7f8c161.chunk.js.map": "/static/js/2.c7f8c161.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.89db258a.chunk.css.map": "/static/css/main.89db258a.chunk.css.map",
-    "static/js/2.dc476d6b.chunk.js.LICENSE.txt": "/static/js/2.dc476d6b.chunk.js.LICENSE.txt",
+    "static/css/main.dbee6027.chunk.css.map": "/static/css/main.dbee6027.chunk.css.map",
+    "static/js/2.c7f8c161.chunk.js.LICENSE.txt": "/static/js/2.c7f8c161.chunk.js.LICENSE.txt",
     "static/media/All_I_Want_For_Christmas_Is_You.893ac235.mp3": "/static/media/All_I_Want_For_Christmas_Is_You.893ac235.mp3",
     "static/media/Break_On_Through.a69b132c.mp3": "/static/media/Break_On_Through.a69b132c.mp3",
     "static/media/Cant_Get_You_Out_Of_My_Head.82ae7400.mp3": "/static/media/Cant_Get_You_Out_Of_My_Head.82ae7400.mp3",
     "static/media/Diamonds_Are_A_Girls_Best_Friend.01b56c51.mp3": "/static/media/Diamonds_Are_A_Girls_Best_Friend.01b56c51.mp3",
     "static/media/Feeling_Good.b02bfe0d.mp3": "/static/media/Feeling_Good.b02bfe0d.mp3",
     "static/media/Get_Lucky.4da7401d.mp3": "/static/media/Get_Lucky.4da7401d.mp3",
-    "static/media/Hey_Joe.98301351.mp3": "/static/media/Hey_Joe.98301351.mp3",
+    "static/media/Hey_Joe.cbdd41fa.mp3": "/static/media/Hey_Joe.cbdd41fa.mp3",
     "static/media/I_Wanna_Dance_with_Somebody.4a0b47e7.mp3": "/static/media/I_Wanna_Dance_with_Somebody.4a0b47e7.mp3",
     "static/media/I_Want_To_Hold_Your_Hand.4ca7cc8b.mp3": "/static/media/I_Want_To_Hold_Your_Hand.4ca7cc8b.mp3",
     "static/media/In_The_End.ce8ffb17.mp3": "/static/media/In_The_End.ce8ffb17.mp3",
@@ -35,8 +35,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.776c1e0d.js",
-    "static/js/2.dc476d6b.chunk.js",
-    "static/css/main.89db258a.chunk.css",
-    "static/js/main.3303b07d.chunk.js"
+    "static/js/2.c7f8c161.chunk.js",
+    "static/css/main.dbee6027.chunk.css",
+    "static/js/main.f805877f.chunk.js"
   ]
 }

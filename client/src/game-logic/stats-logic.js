@@ -1,10 +1,16 @@
-// import { useSelector } from 'react-redux';
-import gameConfig from './game-config';
-
-const totalAverageTime = userPoints => {
-  const { gamePoints, songNumber } = gameConfig;
-  // const { userPoints } = useSelector(stats => stats);
-  return (((songNumber * gamePoints) / 100) - (userPoints / 100)) / songNumber;
+export const postGameStats = (gameStats, url) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(gameStats),
+  };
+  return fetch(url, requestOptions);
 };
 
-export default totalAverageTime;
+export const getStats = async url => {
+  const stats = await fetch(url);
+  const data = await stats.json();
+  return data;
+};
+
+export const hello = 'hello';

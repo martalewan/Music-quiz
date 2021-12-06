@@ -6,6 +6,7 @@ import LoginPage from './pages/Login/Login-page';
 import Quiz from './pages/Quiz/Quiz';
 import UserHub from './pages/UserHub/UserHub';
 import Instructions from './pages/Instructions/Instructions-page';
+import Leaderboard from './pages/Leaderboard/Leaderboard';
 import { saveUser, setUserLoggedIn } from './redux/actions';
 import Navigation from './components/Navigation/Navigation';
 import EndGame from './components/End-game/End-game';
@@ -19,10 +20,10 @@ const App = () => {
       const cookies = new Cookies();
 
       socket.addEventListener('message', e => {
-        console.log('e.data', e.data);
+        console.log('e.data', e.data); // eslint-disable-line
       });
       socket.addEventListener('open', () => {
-        console.log('Frontend is open for papi');
+        console.log('Frontend is open for papi'); // eslint-disable-line
       });
       const user = cookies.get('user');
       if (user) {
@@ -30,7 +31,7 @@ const App = () => {
         dispatch(setUserLoggedIn());
       }
     } catch (err) {
-      console.log(err);
+      console.error(err); // eslint-disable-line
     }
   }, []);
 
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/instructions" element={<Instructions />} />
           <Route path="/results" element={<EndGame />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </div>
     </BrowserRouter>
