@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+// import girlPicture from '../../images/GIRL.png';
+import musicIllustration from '../../images/music-illustration.png';
 import LoginForm from '../../components/Login-form/Login-form';
 import Title from '../../components/Title/Title';
 
@@ -17,8 +18,9 @@ const LoginPage = () => {
 
   return (
     <section className='login-wrapper'>
-      <Title title='HELLO YOU' />
+      <Title title='Welcome' />
       <p className='login-wrapper__description'>Enter your username to create a music quiz</p>
+      <img className='img-login' src={musicIllustration}></img>
       <LoginForm />
     </section>
   );

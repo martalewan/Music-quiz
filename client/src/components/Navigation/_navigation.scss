@@ -10,16 +10,20 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
 
   &__logo {
     all: unset;
     font-size: 18px;
     letter-spacing: 1px;
     text-decoration: none;
-    color: #5C7B7D;
+    color: #536e6f;
   }
+  &__logo:hover {
+    color: #314042;
+  }
+
 }
 
 .nav-logout__btn {
@@ -27,9 +31,10 @@
   border: none;
   letter-spacing: 1px;
   font-size: 18px;
-  color: #5C7B7D;
+  color: #536e6f;
 }
 .nav-logout__btn:hover {
   cursor: pointer;
+  color: #314042;
 }
 
