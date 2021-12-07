@@ -25,10 +25,6 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-// });
-
 app.get('/queries', (req, res, next) => {
   db.query('SELECT * FROM "users"', (err, result) => {
     if(err){
@@ -42,5 +38,8 @@ app.use('/api', userRoutes);
 app.use('/api', songsRoutes);
 app.use('/api', userStatsRoute);
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 module.exports = server;
