@@ -26,10 +26,6 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-// });
-
 app.get('/queries', (req, res, next) => {
   db.query('SELECT * FROM "users"', (err, result) => {
     if(err){
@@ -42,24 +38,10 @@ app.get('/queries', (req, res, next) => {
 app.use('/api', userRoutes);
 app.use('/api', songsRoutes);
 app.use('/api', userStatsRoute);
-
-// app.use('/game', socketRoutes);
 socketsConnection(server);
-// app.use('/sockets/game', (req, res) => {
-//   res.end();
-// });
 
-// app.ws('/echo', (ws, req) => {
-//   wsServer.on('connection', socket => {
-//     console.log("Welcome to our socket");
-//   })
-//   ws.on('message', msg => {
-//       ws.send(msg)
-//   })
-
-//   ws.on('close', () => {
-//       console.log('WebSocket was closed')
-//   })
-// })
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 module.exports = server;

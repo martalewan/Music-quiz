@@ -8,23 +8,10 @@ import SongResult from '../../components/Song-result/Song-result';
 import TimerComponent from '../../components/Timer/Timer';
 import { resetUserPoints } from '../../redux/actions';
 
-
-const fetchSongsList = async setSongsList => {
-  const requestOptions = {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  };
-  const fetchSongs = await fetch('/api/songs', requestOptions);
-  const data = await fetchSongs.json();
-  setSongsList(data);
-  return data;
-};
-
 const Quiz = () => {
   const { gameConfig } = useSelector(state => state);
-  const [songsList, setSongsList] = useState([]);
-  const [currentSong, setCurrentSong] = useState();
-  const [playingSongIndex, setPlayingSongIndex] = useState(0);
+  // const [currentSong, setCurrentSong] = useState();
+  // const [playingSongIndex, setPlayingSongIndex] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(false);
   const [isCountdown, setIsCountdown] = useState(true);
@@ -32,19 +19,16 @@ const Quiz = () => {
   const [numberOfSongs, setNumberOfSongs] = useState(gameConfig.songNumber);
   const [gameOver, setGameOver] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  // const [playing, setPlaying] = useState(false);
+  // const [joinable, setJoinable] = useState(true);
   const dispatch = useDispatch();
- 
+
   useEffect(() => {
     setIsPlaying(false);
     setNumberOfSongs(gameConfig.songNumber);
     dispatch(resetUserPoints(0));
-    fetchSongsList(setSongsList);
   }, []); 
   
-  useEffect(() => {
-    setCurrentSong(songsList[playingSongIndex]);
-  }, [songsList, playingSongIndex]);
-
   // useEffect(() => {
   //   if (isPlaying) {
   //     return setIsCountdown(true);

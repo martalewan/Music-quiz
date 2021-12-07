@@ -47,7 +47,7 @@ const LoginForm = () => {
       <Button
         className='login-form'
         type='submit'
-        innerText='CREATE A GAME'
+        innerText='LOGIN'
       />
     </form>
   );

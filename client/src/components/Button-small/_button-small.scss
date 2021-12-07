@@ -1,21 +1,21 @@
-.btn {
+.btn-small {
   align-items: center;
   background-clip: padding-box;
-  background-color: #5C7B7D;
+  background-color: white;
   border: 2px solid transparent;
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
-  color: #fff;
+  color: #486062;
   cursor: pointer;
   display: inline-flex;
   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
   margin: 0;
-  min-height: 3rem;
+  min-height: 1.5rem;
   padding: calc(.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
   text-decoration: none;
@@ -25,25 +25,25 @@
   touch-action: manipulation;
   vertical-align: baseline;
   width: 15rem;
-  margin-top: 2rem;
+  margin-top: .4rem;
   text-decoration: inherit;
   box-shadow: rgba(99, 99, 99, 0.055) 0px 2px 8px 0px;
 }
 
-.btn:hover,
-.btn:focus {
-  background-color: #5C7B7D;
+.btn-small:hover,
+.btn-small:focus {
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   text-decoration: inherit;
 }
 
-.btn:hover {
+.btn-small {
   transform: translateY(-1px);
   text-decoration: inherit;
 }
 
-.btn:active {
-  background-color: #c85000;
+.btn-small:active {
+  background-color: #5C7B7D;
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(0);
   text-decoration: inherit;

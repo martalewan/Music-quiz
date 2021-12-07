@@ -7,6 +7,12 @@ import {
   RESET_USER_POINTS,
 } from './action-types';
 import { saveRoundTime, saveAverageRoundTime } from './game-stats-action';
+import {
+  setSongChoices,
+  setCurrentSong,
+  incrementGameRound,
+  resetGameRound,
+} from './game-data-actions';
 
 export const saveUser = user => ({
   type: SAVE_USER,
@@ -39,4 +45,8 @@ export const setGameConfig = payload => ({
 export {
   saveRoundTime,
   saveAverageRoundTime,
+  setSongChoices,
+  setCurrentSong,
+  incrementGameRound,
+  resetGameRound,
 };

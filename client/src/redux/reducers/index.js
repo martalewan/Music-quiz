@@ -4,6 +4,7 @@ import isUserLoggedReducer from './is-logged-reducer';
 import pointsReducer from './points-reducer';
 import gameConfigReducer from './game-config-reducer';
 import gameStatsReducer from './game-stats-reducer';
+import gameDataReducer from './game-data-reducers';
 
 const rootReducer = combineReducers({
   isUserLoggedIn: isUserLoggedReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   userPoints: pointsReducer,
   gameConfig: gameConfigReducer,
   gameStats: gameStatsReducer,
+  gameData: gameDataReducer,
 });
 
 export default rootReducer;
