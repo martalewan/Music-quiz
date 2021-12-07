@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ScaleLoader from 'react-spinners/ScaleLoader';
 import { getStats } from '../../game-logic/stats-logic';
 import Button from '../../components/Button/Button';
 
 const Leaderboard = () => {
   const [topTen, setTopTen] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const gameStats = await getStats('/api/users/stats/high-scores/top-10');
       setTopTen(gameStats.rows);
+      setLoading(false);
     })();
   }, []);
 
@@ -22,6 +25,7 @@ const Leaderboard = () => {
           <h3 className='stats-tag-title__score'>Score</h3>
           <h3 className='stats-tag-title__title'>Av time</h3>
         </article>
+        {<ScaleLoader loading={loading} size={150} />}
         {topTen
           && <ol className='leaderboard__user-stats'>
             {topTen.map((personal, index) => (
