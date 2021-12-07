@@ -9,6 +9,15 @@ const socket = new WebSocket('ws://localhost:9999/ws');
 const randomizeSongs = list => [...list].sort(() => Math.random() - 0.5);
 const filterSongs = (list, currentSong) => list.filter(song => song !== currentSong);
 
+socket.onerror = event => {
+  console.error('WebSocket error observed:', event);
+};
+
+socket.onclose = event => {
+  console.log('WebSocket is closed now.');
+  console.log('Event:', event);
+};
+
 export const connectToSocket = currentUser => {
   const newUserPayload = {
     method: 'newUser',
