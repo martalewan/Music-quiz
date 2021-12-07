@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -32,12 +33,6 @@ const UserHub = () => {
   const mountedRef = useRef(true);
   const dispatch = useDispatch();
 
-  fetchSongsList(setSongsList);
-
-  // useEffect(() => {
-  //   setCurrentSong(songsList[playingSongIndex]);
-  // }, [songsList, playingSongIndex]);
-
   useEffect(() => {
     const setGameStats = async () => {
       if (!mountedRef.current) return null;
@@ -51,6 +46,7 @@ const UserHub = () => {
   }, [personalLastThree]);
 
   useEffect(() => {
+    fetchSongsList(setSongsList);
     messageListener(setOpenGames);
     return () => messageListener(setOpenGames);
   }, []);
