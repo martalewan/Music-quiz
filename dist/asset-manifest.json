@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.dcca0856.chunk.css",
-    "main.js": "/static/js/main.ecd14a5d.chunk.js",
-    "main.js.map": "/static/js/main.ecd14a5d.chunk.js.map",
+    "main.js": "/static/js/main.a64f4bfc.chunk.js",
+    "main.js.map": "/static/js/main.a64f4bfc.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.776c1e0d.js",
     "runtime-main.js.map": "/static/js/runtime-main.776c1e0d.js.map",
     "static/js/2.72ff657c.chunk.js": "/static/js/2.72ff657c.chunk.js",
@@ -24,6 +24,7 @@
     "static/media/Sandstorm.ac0e80c6.mp3": "/static/media/Sandstorm.ac0e80c6.mp3",
     "static/media/September.0010a8f7.mp3": "/static/media/September.0010a8f7.mp3",
     "static/media/Summertime.9f6f42b4.mp3": "/static/media/Summertime.9f6f42b4.mp3",
+    "static/media/Survivor.67e4b78d.mp3": "/static/media/Survivor.67e4b78d.mp3",
     "static/media/U_Cant_Touch_This.696254c5.mp3": "/static/media/U_Cant_Touch_This.696254c5.mp3",
     "static/media/Vibes_and_Stuff.1f10f2e1.mp3": "/static/media/Vibes_and_Stuff.1f10f2e1.mp3",
     "static/media/Wake_Me_Up_Before_You_Go_Go.e3b593cb.mp3": "/static/media/Wake_Me_Up_Before_You_Go_Go.e3b593cb.mp3",
@@ -36,6 +37,6 @@
     "static/js/runtime-main.776c1e0d.js",
     "static/js/2.72ff657c.chunk.js",
     "static/css/main.dcca0856.chunk.css",
-    "static/js/main.ecd14a5d.chunk.js"
+    "static/js/main.a64f4bfc.chunk.js"
   ]
 }

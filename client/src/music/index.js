@@ -19,6 +19,7 @@ import Wake_Me_Up_Before_You_Go_Go from './Wake_Me_Up_Before_You_Go_Go.mp3';
 import Who_Let_The_Dogs_Out from './Who_Let_The_Dogs_Out.mp3';
 import Wish_You_Were_Here from './Wish_You_Were_Here.mp3';
 import Work_Bitch from './Work_Bitch.mp3';
+import Survivor from './Survivor.mp3';
 
 const songs = [
   Feeling_Good,
@@ -41,7 +42,8 @@ const songs = [
   Wake_Me_Up_Before_You_Go_Go,
   Who_Let_The_Dogs_Out,
   Wish_You_Were_Here,
-  Work_Bitch
+  Work_Bitch,
+  Survivor,
 ]
 
 export default songs;
