@@ -48,7 +48,12 @@ const TimerComponent = ({
     return false;
   }, [isPlaying]);
 
-  return (<h1 className='song-timer'>{timer}</h1>);
+  return (
+    <>
+      {!isPlaying && <p className="song-timer__text">Guess the song title...</p>}
+      <h1 className='song-timer'>{timer}</h1>
+    </>
+  );
 };
 
 export default TimerComponent;
