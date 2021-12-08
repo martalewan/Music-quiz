@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 
 import Title from '../../components/Title/Title';
@@ -9,12 +9,11 @@ import Button from '../../components/Button/Button';
 import { getStats } from '../../game-logic/stats-logic';
 
 const UserHub = () => {
-  const [personalLastThree, setPersonalLastThree] = useState();
+  const [personalLastThree, setPersonalLastThree] = useState([]);
   const { currentUser } = useSelector(state => state);
   const username = currentUser.username || 'YOU';
   const mountedRef = useRef(true);
   const [loading, setLoading] = useState(true);
-  // const [color, setColor] = useState("#ffffff");
 
   useEffect(() => {
     const setGamesStats = async () => {
@@ -28,6 +27,12 @@ const UserHub = () => {
       mountedRef.current = false;
     };
   }, [personalLastThree]);
+
+  const override = css`
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+  `;
 
   return (
   <section className='welcome-wrapper'>
@@ -50,7 +55,8 @@ const UserHub = () => {
         innerText='LEADERBOARD'
       />
     </Link>
-    {personalLastThree && <ul className='welcome-wrapper__user-stats'>
+    {<ScaleLoader loading={loading} css={override} size={150} />}
+    {personalLastThree.length > 0 && !loading && personalLastThree && <ul className='welcome-wrapper__user-stats'>
       <h4 className='stats-main-title'>Your last three games stats</h4>
       {personalLastThree.map((personal, index) => {
         if (index <= 2) {
@@ -63,9 +69,6 @@ const UserHub = () => {
         }
         return false;
       })
-      }
-      {
-        <ScaleLoader loading={loading} size={150} />
       }
     </ul>
   }

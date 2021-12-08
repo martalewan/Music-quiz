@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { css } from '@emotion/react';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import { getStats } from '../../game-logic/stats-logic';
 import Button from '../../components/Button/Button';
@@ -16,16 +17,22 @@ const Leaderboard = () => {
     })();
   }, []);
 
+  const override = css`
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+`;
+
   return (
     <div className='leaderboard-page'>
-      <section className='leaderboard'>
+      {<ScaleLoader loading={loading} css={override} size={150} />}
+      {!loading && <section className='leaderboard'>
         <h1 className='leaderboard__title'>Leaderboard</h1>
         <article className='leaderboard__tags'>
           <h3 className='stats-tag-title'>Player</h3>
           <h3 className='stats-tag-title__score'>Score</h3>
           <h3 className='stats-tag-title__title'>Av time</h3>
         </article>
-        {<ScaleLoader loading={loading} size={150} />}
         {topTen
           && <ol className='leaderboard__user-stats'>
             {topTen.map((personal, index) => (
@@ -37,7 +44,7 @@ const Leaderboard = () => {
             ))}
           </ol>
         }
-      </section>
+      </section>}
       <Link className='link' to='/userhub'>
         <Button
           className='back'

@@ -15,7 +15,6 @@ import Sandstorm from './Sandstorm.mp3';
 import U_Cant_Touch_This from './U_Cant_Touch_This.mp3';
 import Summertime from './Summertime.mp3';
 import Vibes_and_Stuff from './Vibes_and_Stuff.mp3';
-import The_End from './The_End.mp3';
 import Survivor from './Survivor.mp3';
 import Wake_Me_Up_Before_You_Go_Go from './Wake_Me_Up_Before_You_Go_Go.mp3';
 import Who_Let_The_Dogs_Out from './Who_Let_The_Dogs_Out.mp3';
@@ -40,7 +39,6 @@ const songs = [
   U_Cant_Touch_This,
   Summertime,
   Vibes_and_Stuff,
-  The_End,
   Survivor,
   Wake_Me_Up_Before_You_Go_Go,
   Who_Let_The_Dogs_Out,
