@@ -15,7 +15,7 @@ const TimerComponent = ({
       }, 1000);
 
       const timeout = setTimeout(() => {
-        timerAction(false);
+        timerAction();
       }, timer * 1000);
 
       return () => {

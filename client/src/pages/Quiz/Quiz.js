@@ -6,21 +6,18 @@ import Player from '../../components/Player/Player';
 import QuizChoices from '../../components/Quiz-choices/Quiz-choices';
 import SongResult from '../../components/Song-result/Song-result';
 import TimerComponent from '../../components/Timer/Timer';
-import { resetUserPoints } from '../../redux/actions';
+import { resetUserPoints, incrementGameRound, setCurrentSong, setIsCountdown } from '../../redux/actions';
+import Lobby from '../../components/Lobby/Lobby';
+import { createRandomAnswers, startCountdown, quitLobby, goToNextSong } from '../../sockets';
 
 const Quiz = () => {
-  const { gameConfig } = useSelector(state => state);
-  // const [currentSong, setCurrentSong] = useState();
-  // const [playingSongIndex, setPlayingSongIndex] = useState(0);
-  const [answered, setAnswered] = useState(false);
+  const { gameConfig, gameData, currentUser } = useSelector(state => state);
+  const { currentSong, isLobby, isCountdown, gameId, isAnswered} = gameData;
   const [correctAnswer, setCorrectAnswer] = useState(false);
-  const [isCountdown, setIsCountdown] = useState(true);
   const [songPoints, setSongPoints] = useState(gameConfig.gamePoints);
   const [numberOfSongs, setNumberOfSongs] = useState(gameConfig.songNumber);
   const [gameOver, setGameOver] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  // const [playing, setPlaying] = useState(false);
-  // const [joinable, setJoinable] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,62 +26,77 @@ const Quiz = () => {
     dispatch(resetUserPoints(0));
   }, []); 
   
-  // useEffect(() => {
-  //   if (isPlaying) {
-  //     return setIsCountdown(true);
-  //   }
-  //   return false;
-  // }, [isPlaying])
+  const startFromLobby = () => {
+    startCountdown(currentUser, gameId, true);
+    quitLobby(currentUser, gameId);
+  };
 
-  const setNextSong = () => {
-    setAnswered(false);
-    setIsCountdown(true);
-    setPlayingSongIndex(index => index + 1);
+  const resetCountdown = countdown => {
+    startCountdown(currentUser, gameId, countdown);
+  }
+
+  const timerAction = () => {
+    dispatch(incrementGameRound());
+    dispatch(setIsCountdown(false));
+  }
+
+  const setNextSong = async () => {
+    const gameRoundData = await gameData.currRound;
+    const nextSong = await gameData.songsList[gameRoundData];
+    dispatch(setCurrentSong(nextSong));
+    createRandomAnswers(gameData.songsList, nextSong, dispatch);
+    startCountdown(currentUser, gameId, true);
+    goToNextSong(currentUser, gameId, gameData.songsList, gameRoundData);
   };
 
   return (
-    <section className='quiz'>
-      {isCountdown 
-        && <TimerComponent
-              time={3}
-              timerAction={setIsCountdown}
-            />
-      }
-      { currentSong
-        && !answered
-        && !isCountdown
-        && !gameOver
-        && <>
-          <Player
-            playingSong={currentSong}
-            songs={songs}
-            setIsPlaying={setIsPlaying}
-          /> 
-          <QuizChoices 
-            currentSong={currentSong}
-            songsList={songsList}
-            setAnswered={setAnswered}
-            setCorrectAnswer={setCorrectAnswer}
-            setSongPoints={setSongPoints}
-            songPoints={songPoints}
-            numberOfSongs={numberOfSongs}
-            setNumberOfSongs={setNumberOfSongs}
-            isPlaying={isPlaying}
-          />
-        </>
-      }
-      {answered
-        && !isCountdown
-        && <SongResult
-          setGameOver={setGameOver}
-          gameOver={gameOver} 
-          correctAnswer={correctAnswer} 
-          setNextSong={setNextSong}
-          songPoints={songPoints}
-          numberOfSongs={numberOfSongs}
-        /> 
-      }
-    </section>
+      <section className='quiz'>
+          {isLobby
+            && currentSong
+            && <Lobby startCountDown={startFromLobby}/>
+          }
+          {isCountdown 
+            && <TimerComponent
+                  time={3}
+                  timerAction={timerAction}
+                />
+          }
+          { currentSong
+            && !isLobby
+            && !isAnswered
+            && !isCountdown
+            && !gameOver
+            && <>
+              <Player
+                playingSong={gameData.currentSong}
+                songs={songs}
+                setIsPlaying={setIsPlaying}
+              /> 
+              <QuizChoices 
+                currentSong={gameData.currentSong}
+                setCorrectAnswer={setCorrectAnswer}
+                setSongPoints={setSongPoints}
+                songPoints={songPoints}
+                numberOfSongs={numberOfSongs}
+                setNumberOfSongs={setNumberOfSongs}
+                isPlaying={isPlaying}
+              />
+            </>
+          }
+          {isAnswered
+            && currentSong
+            && !isLobby
+            && !isCountdown
+            && <SongResult
+              setGameOver={setGameOver}
+              gameOver={gameOver} 
+              correctAnswer={correctAnswer} 
+              setNextSong={setNextSong}
+              songPoints={songPoints}
+              numberOfSongs={numberOfSongs}
+            /> 
+          }
+        </section>
   );
 };
 

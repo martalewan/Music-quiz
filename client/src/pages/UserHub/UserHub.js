@@ -10,24 +10,25 @@ import { getStats } from '../../game-logic/stats-logic';
 import {
   connectToSocket, createGame, joinGame, messageListener,
 } from '../../sockets';
+import { setSongsList } from '../../redux/actions/game-data-actions';
+import { resetUserPoints } from '../../redux/actions';
 
-const fetchSongsList = async setSongsList => {
-  const requestOptions = {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  };
-  const fetchSongs = await fetch('/api/songs', requestOptions);
-  const data = await fetchSongs.json();
-  setSongsList(data);
-  return data;
-};
+const fetchSongsList = () => (
+  async dispatch => {
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    };
+    const fetchSongs = await fetch('/api/songs', requestOptions);
+    const data = await fetchSongs.json();
+    dispatch(setSongsList(data));
+    return data;
+});
 
 const UserHub = () => {
   const [personalLastThree, setPersonalLastThree] = useState();
   const [currentGame, setCurrentGame] = useState({});
   const [openGames, setOpenGames] = useState([]);
-  const [songsList, setSongsList] = useState([]);
-
   const { currentUser, gameData } = useSelector(state => state);
   const username = currentUser.username || 'YOU';
   const mountedRef = useRef(true);
@@ -46,35 +47,33 @@ const UserHub = () => {
   }, [personalLastThree]);
 
   useEffect(() => {
-    fetchSongsList(setSongsList);
-    messageListener(setOpenGames);
-    return () => messageListener(setOpenGames);
+    dispatch(fetchSongsList());
+    messageListener(setOpenGames, dispatch);
+    // return () => messageListener(setOpenGames);
   }, []);
-
+  
   const connectAndCreateGame = () => {
-    connectToSocket(currentUser);
-    createGame(
-      dispatch,
-      currentUser,
-      setCurrentGame,
-      songsList,
-      gameData.currRound,
-    );
+    if (!currentGame.gameId) {
+      connectToSocket(currentUser);
+      createGame(
+        dispatch,
+        currentUser,
+        setCurrentGame,
+        gameData.songsList,
+        gameData.currRound,
+      );
+    }  
+    return;
   };
 
-  const joinGameOnClick = () => {
-    joinGame(currentUser, currentGame.gameId);
+  const joinGameOnClick = (gameId) => {
+    connectToSocket(currentUser);
+    joinGame(currentUser, gameId);
   };
 
   return (
   <section className='welcome-wrapper'>
-    <Title title={`WELCOME ${username.toUpperCase()}`}/>
-    {/* <Link className='link' to='/quiz'>
-      <Button
-        className='start-game'
-        innerText='START'
-      />
-    </Link> */}
+    <Title title={`HELLO ${username.toUpperCase()}`}/>
     {/* <Link className='link' to='/quiz'> */}
       <Button
         className='start-game'
@@ -82,18 +81,17 @@ const UserHub = () => {
         onClickFunc={connectAndCreateGame}
       />
     {/* </Link> */}
-    {/* <Link className='link' to='/quiz'> */}
     {openGames
       && openGames.map(game => (
-        <ButtonSmall
-          className='start-game'
-          innerText='MARTA GAME'
-          onClickFunc={joinGameOnClick}
-          key={game.id}
-        />
+        <Link key={game.id} className='link' to='/quiz'>
+          {console.log(game)}
+          <ButtonSmall
+            className='start-game'
+            innerText={`${game.quizModerator.toUpperCase()}'S GAME`}
+            onClickFunc={() => joinGameOnClick(game.id)}
+            />
+          </Link>
       ))}
-
-    {/* </Link> */}
 
     <Link className='link' to='/instructions' >
       <Button

@@ -25,7 +25,6 @@ const SongResult = ({
         <p className='song-result__text emojis'>👏🏻👏🏻👏🏻</p>
         <p className='song-result__text'>Good job!</p>
         <p className='song-result__text'>Your answer was correct</p>
-
         <p className='song-result__title'>Your result is {songPoints} points</p>
       </>
       : <>

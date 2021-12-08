@@ -12,6 +12,13 @@ import {
   setCurrentSong,
   incrementGameRound,
   resetGameRound,
+  setSongsList,
+  addPlayerToGame,
+  resetGamePlayers,
+  setIsLobby,
+  setGameId,
+  setIsCountdown,
+  setAnswered,
 } from './game-data-actions';
 
 export const saveUser = user => ({
@@ -49,4 +56,11 @@ export {
   setCurrentSong,
   incrementGameRound,
   resetGameRound,
+  setSongsList,
+  addPlayerToGame,
+  resetGamePlayers,
+  setIsLobby,
+  setGameId,
+  setIsCountdown,
+  setAnswered,
 };

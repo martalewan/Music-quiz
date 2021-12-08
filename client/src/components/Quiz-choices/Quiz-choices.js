@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonChoice from '../Button-choice/Button-choice';
 import TimerComponent from '../Timer/Timer';
-import { setUserPoints } from '../../redux/actions';
+import { setUserPoints, setAnswered } from '../../redux/actions';
 
 const QuizChoices = ({
-  setAnswered, setCorrectAnswer, setSongPoints, songPoints,
+  setCorrectAnswer, setSongPoints, songPoints,
   setNumberOfSongs, isPlaying,
 }) => {
-  const [songChoices] = useState();
   const { gameConfig, gameData } = useSelector(state => state);
+  const { songChoices } = gameData;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,15 +20,15 @@ const QuizChoices = ({
     setNumberOfSongs(songs => songs - 1);
     if (!e) {
       setCorrectAnswer(false);
-      return setAnswered(true);
+      return dispatch(setAnswered(true));
     }
     if (e.target.value === gameData.currentSong) {
       setCorrectAnswer(true);
       dispatch(setUserPoints(songPoints));
-      return setAnswered(true);
+      return dispatch(setAnswered(true));
     }
     setCorrectAnswer(false);
-    return setAnswered(true);
+    return dispatch(setAnswered(true));
   };
 
   const userChoice = e => {
