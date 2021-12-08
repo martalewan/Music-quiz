@@ -4,7 +4,7 @@
 }
 
 .login-form__input {
-   margin-top: 2rem;
+    margin-top: 2rem;
     max-width: 13rem;
     color: black;
     font-size: 16px;
@@ -21,6 +21,7 @@
 .login-form__input::placeholder {
     opacity: .9;
     font-weight: 200;
+    text-align: center;
 }
 
 .login-form__input:focus {

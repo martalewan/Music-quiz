@@ -6,6 +6,7 @@
   flex-direction: column;
   text-align: center;
   padding-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 .login-form {
@@ -17,4 +18,11 @@
 .login-wrapper__description {
   padding-top: 1rem;
   padding-bottom: .5rem;
+}
+
+.img-login {
+  width: 16rem;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: -1.5rem;
 }
