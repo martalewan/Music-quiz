@@ -20,6 +20,7 @@ const TextInput = ({
       className = {`${className}__input`}
       value = {inputValue[inputName]}
       onChange = {handleOnChange}
+      maxLength='9'
       required
     />
     </>
