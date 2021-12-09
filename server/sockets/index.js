@@ -9,11 +9,11 @@ const socketsConnection = server => {
     console.log("Welcome to our socket");
 
     socket.on('message', (message) => {
-      console.log('Our message: ', message);
+      // console.log('Our message: ', message);
     });
     
     socket.on("close", () => {
-      console.log("Socket Disconnected");
+      // console.log("Socket Disconnected");
     })
   });
 }

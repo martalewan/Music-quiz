@@ -19,11 +19,10 @@ const App = () => {
       const socket = new WebSocket(HOST);
       const cookies = new Cookies();
 
-      socket.addEventListener('message', e => {
-        console.log('e.data', e.data); // eslint-disable-line
+      socket.addEventListener('message', () => {
+        // console.log('e.data', e.data); // eslint-disable-line
       });
       socket.addEventListener('open', () => {
-        console.log('Frontend is open for papi'); // eslint-disable-line
       });
       const user = cookies.get('user');
       if (user) {

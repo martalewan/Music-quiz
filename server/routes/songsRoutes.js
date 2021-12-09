@@ -13,7 +13,6 @@ router.get('/songs', (req, res) => {
 })
 
 router.get('/songs/stream', (req, res) => {
-  console.log('songRoutes', req.headers.songfile);
   const songFile = req.headers.songfile;
   const filePath = path.resolve(__dirname, '../db/music', songFile);
   const stat = fs.statSync(filePath);
