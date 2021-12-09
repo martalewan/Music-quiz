@@ -1,4 +1,4 @@
-import { SET_COUNTDOWN, SET_IS_COUNTDOWN } from '../../actions/action-types';
+import { SET_IS_COUNTDOWN } from '../../actions/action-types';
 
 const isCountdownReducer = (state = false, action) => {
   switch (action.type) {
