@@ -2,7 +2,7 @@
 
 Full stack music quiz mobile app.
 
-Final project at SALT
+Final project at SALT.
 
 Created during two weeks at the end of 2021.
 
